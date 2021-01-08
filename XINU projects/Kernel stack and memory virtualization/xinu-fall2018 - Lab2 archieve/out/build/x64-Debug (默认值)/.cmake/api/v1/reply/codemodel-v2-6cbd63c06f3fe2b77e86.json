@@ -1,0 +1,55 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "xinu_fall2018___Lab2_archieve",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "xinu_fall2018___Lab2_archieve::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-xinu_fall2018___Lab2_archieve-Debug-9b09d852f0becdda409d.json",
+					"name" : "xinu_fall2018___Lab2_archieve",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Projects/Projects/XINU projects/Kernel stack and memory virtualization/xinu-fall2018 - Lab2 archieve/out/build/x64-Debug (默认值)",
+		"source" : "C:/Projects/Projects/XINU projects/Kernel stack and memory virtualization/xinu-fall2018 - Lab2 archieve"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 1
+	}
+}

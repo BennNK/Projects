@@ -1,0 +1,3 @@
+C:/Projects/Projects/XINU projects/Kernel stack and memory virtualization/xinu-fall2018 - Lab2 archieve/out/build/x64-Debug (默认值)/CMakeFiles/xinu_fall2018___Lab2_archieve.dir
+C:/Projects/Projects/XINU projects/Kernel stack and memory virtualization/xinu-fall2018 - Lab2 archieve/out/build/x64-Debug (默认值)/CMakeFiles/edit_cache.dir
+C:/Projects/Projects/XINU projects/Kernel stack and memory virtualization/xinu-fall2018 - Lab2 archieve/out/build/x64-Debug (默认值)/CMakeFiles/rebuild_cache.dir

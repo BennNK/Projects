@@ -1,0 +1,55 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "xinu_fall2018",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "xinu_fall2018::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-xinu_fall2018-Debug-9028b4edab919337c43e.json",
+					"name" : "xinu_fall2018",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Projects/Projects/XINU projects/Function call stack attack/xinu-fall2018 - Lab1 archieve/out/build/x64-Debug (默认值)",
+		"source" : "C:/Projects/Projects/XINU projects/Function call stack attack/xinu-fall2018 - Lab1 archieve"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 1
+	}
+}

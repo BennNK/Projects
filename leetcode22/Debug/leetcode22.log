@@ -1,0 +1,6 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: 中间目录(Debug\)包含从另一个项目(leetcode22.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
+  2.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\tgmath.h(27): warning UCRT4000: The Universal CRT implementation of tgmath.h does not conform to the C99 standard. Functionality equivalent to the type-generic functions provided by tgmath.h is available in <ctgmath> when compiling as C++. If compiling in C++17 mode or higher (/std:c++17), this header will automatically include <ctgmath> instead. You can define _CRT_SILENCE_NONCONFORMING_TGMATH_H to acknowledge that you have received this warning.
+C:\Projects\Projects\leetcode22\2.cpp(119,20): warning C4018: “<”: 有符号/无符号不匹配
+C:\Projects\Projects\leetcode22\2.cpp(140,20): warning C4018: “<”: 有符号/无符号不匹配
+  leetcode22.vcxproj -> C:\Projects\Projects\leetcode22\Debug\2 add two numbers.exe

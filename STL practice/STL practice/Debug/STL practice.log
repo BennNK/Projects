@@ -1,0 +1,12 @@
+﻿  1.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\algorithm(3249,34): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+C:\Projects\Projects\STL practice\STL practice\1.cpp(115): message : 查看对正在编译的函数 模板 实例化“_FwdIt1 std::find_first_of<std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>>,std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>>,main::<lambda_d11591fda5e3314de6afa351a77d1ce1>>(_FwdIt1,const _FwdIt1,const _FwdIt2,const _FwdIt2,_Pr)”的引用
+          with
+          [
+              _FwdIt1=std::_List_iterator<std::_List_val<std::_List_simple_types<int>>>,
+              _Ty=int,
+              _FwdIt2=std::_List_iterator<std::_List_val<std::_List_simple_types<int>>>,
+              _Pr=main::<lambda_d11591fda5e3314de6afa351a77d1ce1>
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\algorithm(3249,23): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+  STL practice.vcxproj -> C:\Projects\Projects\STL practice\Debug\STL practice.exe
