@@ -5,6 +5,9 @@
 #include <string>
 #include <list>
 #include <deque>
+#include <set>
+#include <map>
+#include <unordered_map>
 
 using namespace std;
 
@@ -28,14 +31,6 @@ private:
     int x_cord;
     int y_cord;
 };
-
-
-
-
-
-
-
-
 
 
 
@@ -355,6 +350,273 @@ int main()
     //prev_permutation用法类似
 
     //accumulate等数值运算函数  略
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //--------------标准库容器练习---------------
+
+
+    //常用容器有string，vector，list，set，map，multimap，以及set map系列的四个无序版
+
+
+    //----  string
+
+        // = 等号赋值的使用方法。下列代码输出str1都为"abc"。
+    string str1; str2 = "abc";
+    str1 = "abc";
+    str1 = { 'a','b','c' };
+    str1 = str2;
+    
+        //assign  下列代码输出str1都为"abc"。
+    str2 = "abc";
+    str1.assign(str2);
+    list <char> list_char; list_char.push_back('a'); list_char.push_back('b'); list_char.push_back('c');
+    str1.assign(list_char.begin(), list_char.end());//list_char换成别的vector <char>或者string也行，即保证iterator的值为char即可。
+
+        //front和back，以及可以用[]访问元素
+    cout << str1.front() << str1.back() << endl;//输出两个字符ac
+
+        //size 输出含有的char个数
+        
+        //empty 输出bool值，是否为空。
+
+        //erase 此处仅列出两种常用用法
+    str1 = "abcd";
+    str1.erase(str1.begin());//删除一个元素
+    str1.erase(str1.end()-1);//删除最后一个元素（注意与insert的区别）
+    str1.erase(str1.begin(), str1.begin() + 2);//删除一串元素(2个)
+    str1 = "abcd";
+    str1.erase(2,3);//输出"a,b"
+
+        //clear 清除内容
+
+        //insert  此处仅列出两种常用用法
+    str1 = "abc";
+    str1.insert(str1.end() - 1, 'f');//在容器中间插入一个元素，如果str1 = "abc"则插入结果为"abfc"
+    str1 = "abc";
+    str1.insert(str1.end(), 'f');//在容器末尾插入一个元素，如果str1 = "abc"则插入结果为"abcf"
+    str1 = "abc";
+    str2 = "ff";
+    str1.insert(str1.begin() + 1, str2.begin(),str2.end());//插入一串元素
+
+        //push_back和pop_back，还有append等，建议用insert和erase来代替。
+
+        //+=操作符，string特有。在后面添加东西。
+    str1 = "abc";
+    str1 += str1;//输出"abcabc"
+
+
+        //compare 略复杂，后面再说
+
+        //starts_with，ends_with，contains 输出bool值，判断前缀，后缀以及子串存在
+    //cout << str1.starts_with('ab'); //C++20才有。输出true。其余函数同理。
+
+        //resize 改变大小
+    str1.resize(20);//如果resize后变大，则默认填充'\0'在后面。可以再给resize加一个参数指定填充元素。
+
+
+        //find可以用std::search代替
+
+        //----下列为与string有关的全局函数。
+
+        //>,<,>=,<=,==,!=比较运算符  按字典顺序比较
+    bool test_bool = (string("aaa") > string("aa"));//输出true
+    test_bool = (string("aaa") > string("Aaa"));//输出true，因为ascii里大写字母在前
+
+        //stoi, stol, stoll 转换成整数
+    str1 = "123";
+    int int_fr_st;
+    int_fr_st = stoi(str1);//输出123
+    str1 = "123.5";
+    int_fr_st = stoi(str1);//输出123
+    str1 = "123.5 abc";
+    int_fr_st = stoi(str1);//输出123（数字必须在string开头，如果数字之前有其他字符则报错）
+
+        //stof, stod, stold 转换成浮点数
+    str1 = "123.5";
+    float f_fr_st = stof(str1);//输出123.5
+
+        //to_string 将数字转换成string，对于浮点数一般保留6位小数
+    str1 = to_string(123);//输出"123"
+    str1 = to_string(123.3);//输出"123.300000"
+    str1 = to_string(1111123.3);//"1111123.300000"
+
+    
+
+
+
+    //----  vector
+
+        //用assign和=赋值
+    vector <int> vec1 = { 1,2,3,4};
+    vector <int> vec2 = vec1;
+    vec2 = { 1,2,3,4 };
+    vec2.assign(vec1.begin(), vec1.end());
+
+        //用[]访问元素
+
+        //empty，size等和string类似
+
+        //修改元素的操作：clear，insert，erase，pop_pack，push_back，resize
+    vec1 = { 1,2,3,4 };
+    vec1.insert(vec1.end(), 1);//输出{ 1,2,3,4,1}
+    vec1.erase(vec1.end() - 1);//输出{ 1,2,3,4}。如果删除的元素在容器中间，则自动连接两端。
+    //vec1.erase(1, 2);这种表达式是错误的。string可以用常数指定删除范围，vector不可以。
+    vec1.push_back(1);//输出{ 1,2,3,4,1}
+    vec1.pop_back();//输出{ 1,2,3,4}
+    vec1.resize(5, 1);//输出{ 1,2,3,4,1}
+    vec1.resize(6);//输出{ 1,2,3,4,1,0} 默认用0填充
+
+        //逻辑运算符：>,<,>=,<=,==，!=  按照字典顺序比较两个vector
+    vec1 = { 1,2,3,4 };
+    vec2 = { 1,2,3,3,1 };
+    test_bool = vec1 > vec2;//输出true
+    vec1 = { 1,2,3,4 };
+    vec2 = { 1,2,3,4,1 };
+    test_bool = vec1 > vec2;//输出false
+
+
+    
+
+
+    //list
+
+
+
+    //----------- set
+        //C++ STL 标准库为 set 容器配置的迭代器类型为双向迭代器。这意味着，假设 p 为此类型的迭代器，则其只能进行 ++p、p++、--p、p--、*p 操作，并且 2 个双向迭代器之间做比较，也只能使用 == 或者 != 运算符。
+        //=操作符
+    set <int> set1 = { 1,2,3,4,5,4};//set1为{ 1,2,3,4,5}
+    set1 = { 1,2,3 };//set1为{ 1,2,3 }
+    set <int> set2 = set1;
+
+        //用itetator遍历(只能挨个遍历，不能像别的容器string,vector等一样跳跃)
+    for (auto it_set = set1.begin(); it_set != set1.end(); it_set++)
+    {
+        cout << *(it_set);
+    }cout << endl;
+
+        //empty, size同vector
+
+        //clear, insert, erase
+    set1.clear();
+    set1 = { 1,2,3,4,5 };
+    set1.insert(0);//插入一个元素并自动排序，输出{ 0,1,2,3,4,5 }。插入一个元素的时间复杂度为logN （2为底）。
+    set2 = { 1,6,7 };
+    set1.insert(set2.begin(), set2.end());//插入一串元素，输出{ 0,1,2,3,4,5,6,7 }
+    auto it_set = set1.end();
+    it_set--;
+    set1.erase(it_set);//删除末尾元素,输出{ 0,1,2,3,4,5,6}。这里只展示删除单个元素。可以用first last来界定删除范围。
+    for (it_set = set1.begin(); it_set != set1.end(); it_set++)
+    {
+        if (*it_set == 2) 
+        {
+            it_set = set1.erase(it_set);//用it删除指定元素。某次循环中删除操作完成后，返回it_set指向的end，set1变为{ 0,1,3,4,5,6 }。时间复杂度：常数
+            break;
+        }
+    }
+    set1.erase(3);//根据key值删除单个元素，输出set1={ 0,1,4,5,6 }
+    it_set = set1.begin();
+    set1.erase(it_set);//根据it删除单个元素但不返回，此时it_set被修改为set1.end()。输出set1为{ 1,4,5,6 }
+
+        
+        //find  时间复杂度logN。可以使用STL自带的find函数来查找，但更花时间。
+    it_set = find(set1.begin(),set1.end(), 1);//更耗时
+    it_set = set1.find(1);//logN
+
+
+        //逻辑运算符：>,<,>=,<=,==，!=  按照字典顺序比较两个set
+    set1 = { 1,2,3,4 };
+    set2 = { 1,2,3,3,1 };
+    test_bool = set1 > set2;//输出true
+    set1 = { 1,2,3,4 };
+    set2 = { 1,2,3,4,1 };
+    test_bool = set1 > set2;//输出false
+
+
+
+    //--------map
+        //map的iterator类型和set是一样的。元素（即*iterator）为一个pair
+
+        //=操作符
+    map <int, int> map1 = { {1,1},{2,1},{4,5},{3,2} };//会自动按key值升序排列元素。
+    map <int, int> map2 = map1;
+    map2 = { {1,1},{2,1},{4,5},{6,2} };
+        
+        //用iterator遍历方式与set相同
+    auto it_map = map1.begin();
+    for (it_map = map1.begin(); it_map != map1.end(); it_map++)
+    {
+        cout << (*(it_map)).second;
+    }//输出1125
+
+        //[]的用法：访问与插入，时间复杂度logN
+    cout << map1[2];//访问key=2的元素并输出其value。
+    map1[5] = 10;//插入{5,10}
+    map1[6]++;//因为容器内本没有key-6，所以插入{6,1}
+
+        //empty，size用法同vector
+
+        //clear, insert, erase。仅介绍erase。erase的参数可以是key值或者iterator，返回分别为01或者iterator。
+    map1 = { {1,1},{2,1},{4,5},{3,2} };
+    it_map = map1.begin();
+    for (; it_map != map1.end(); )
+    {
+        if (it_map->first == 1 || it_map->first == 2)
+        {
+            it_map = map1.erase(it_map);//每次执行完删除操作后，返回的it为指向下一个元素的it。
+        }
+        else it_map++;
+    }//循环结束后map1只剩{{3,2}, {4,5}}
+    map1.erase(3);//根据key值删除元素。删掉后只剩下{{4,5}}。注意这种写法返回值是0或者1，而不是iterator。
+    auto ret = map1.erase(4);//返回ret为1。set里根据key值删除也会有类似返回。
+    map1.erase(3);//企图删除不存在的key，还是得{{4,5}}
+        //erase也可以删除范围。
+
+        //find  复杂度logN
+    map1 = { {1,1},{2,1},{4,5},{3,2} };
+    it_map = map1.find(2);
+
+        //逻辑运算符：>,<,>=,<=,==，!=  按照字典顺序比较两个map的key
+
+
+       
+    //-------unordered_map
+        //迭代器类型为LegacyForwardIterator，只能有=，==，++的操作。遍历哈希表没啥意义。
+
+        //=操作符
+
+        //[]操作符访问或插入元素。复杂度一般为O（1），最坏情况为O（N）
+        
+        //可以说除了iterator与算法时间复杂度与map不同以外，其他函数用法与map完全相同。
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
