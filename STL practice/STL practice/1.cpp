@@ -8,6 +8,7 @@
 #include <set>
 #include <map>
 #include <unordered_map>
+#include <queue>
 
 using namespace std;
 
@@ -185,7 +186,10 @@ int main()
         //（remove返回的iterator指向该容器中的某个位置，这个位置及以后都是待删除元素）  
         //复杂度：使用N次pred
     str3 = "abcddea, er, asd , 123, er1,as";
+    auto ite = remove(str3.begin(), str3.end(), 'a');
+    while (ite != str3.end()) ite++;
 
+    str3 = "abcddea, er, asd , 123, er1,as";
         //下列代码从 string 移除所有空格
     str3.erase(remove(str3.begin(), str3.end(), 'a'), str3.end());//如果str3 = "abcddea, er, asd , 123, er1,as"则输出str3为"abcddea,er,asd,123,er1,as"
         //remove_if 可以将“相等”比较策略用pred替换
@@ -377,12 +381,17 @@ int main()
     str1 = "abc";
     str1 = { 'a','b','c' };
     str1 = str2;
+
+    auto itera = str1.begin();
+    cout << "--------- " << *itera;
+
     
         //assign  下列代码输出str1都为"abc"。
     str2 = "abc";
     str1.assign(str2);
     list <char> list_char; list_char.push_back('a'); list_char.push_back('b'); list_char.push_back('c');
     str1.assign(list_char.begin(), list_char.end());//list_char换成别的vector <char>或者string也行，即保证iterator的值为char即可。
+    str1.assign(str2.begin(), str2.begin()+1);
 
         //front和back，以及可以用[]访问元素
     cout << str1.front() << str1.back() << endl;//输出两个字符ac
@@ -397,8 +406,14 @@ int main()
     str1.erase(str1.end()-1);//删除最后一个元素（注意与insert的区别）
     str1.erase(str1.begin(), str1.begin() + 2);//删除一串元素(2个)
     str1 = "abcd";
-    str1.erase(2,3);//输出"a,b"
+    str1.erase(1,3);//删除下标在1,3之间的元素。输出"a"
 
+    str1 = "abcd";
+    it_str = str1.begin() + 2;
+    auto it_str2 = str1.erase(it_str);//返回的it_str2指向d。虽然it_str也指向d（set等中就变成end()了，而非此处的指向删除后的下一个元素），但为了和vector等的erase统一记忆，所以还是采用读取erase函数返回值的方式来获取删除后的it位置。
+
+
+    
         //clear 清除内容
 
         //insert  此处仅列出两种常用用法
@@ -472,6 +487,10 @@ int main()
     vec1 = { 1,2,3,4 };
     vec1.insert(vec1.end(), 1);//输出{ 1,2,3,4,1}
     vec1.erase(vec1.end() - 1);//输出{ 1,2,3,4}。如果删除的元素在容器中间，则自动连接两端。
+
+    auto it_vec = vec1.begin() + 1;
+    auto it_vec2 = vec1.erase(it_vec);//返回的it_vec2指向3。虽然it_vec也指向3（set,map等中就变成end()了，而非此处的指向删除后的下一个元素），但为了和set等的erase统一记忆，所以还是采用读取erase函数返回值的方式来获取删除后的it位置。
+
     //vec1.erase(1, 2);这种表达式是错误的。string可以用常数指定删除范围，vector不可以。
     vec1.push_back(1);//输出{ 1,2,3,4,1}
     vec1.pop_back();//输出{ 1,2,3,4}
@@ -489,12 +508,31 @@ int main()
 
     
 
+    //------priority_queue （堆）
+        //增删logN，查找堆顶为常数时间。
+    
+        //定义。注意如果要更改比大小函数，则输入参数必须包含三个参数，第一个元素类型，第二个必须是一个连续式存储容器，第三个是比大小函数，可以用lambda表达式。
+    priority_queue <int, vector<int>, greater<int>> hp; //定义int类型的最小堆。
+        //不能像其他很多容器一样用assign和=来将一段元素赋值给它。一般只能先像上面一样声明一个空的，然后循环往里面push元素。
 
-    //list
+
+        //常用函数：push，pop，empty，size
+    for (int i = 0; i < 4;i++)
+    {
+        hp.push(i);
+    }
+    cout << hp.top()<<endl;//0
+    hp.pop();//弹出堆顶
+    cout << hp.top() << endl;//1
 
 
 
-    //----------- set
+
+
+
+
+
+    //----------- set       （增删查时间复杂度均为logN）
         //C++ STL 标准库为 set 容器配置的迭代器类型为双向迭代器。这意味着，假设 p 为此类型的迭代器，则其只能进行 ++p、p++、--p、p--、*p 操作，并且 2 个双向迭代器之间做比较，也只能使用 == 或者 != 运算符。
         //=操作符
     set <int> set1 = { 1,2,3,4,5,4};//set1为{ 1,2,3,4,5}
@@ -533,7 +571,7 @@ int main()
         
         //find  时间复杂度logN。可以使用STL自带的find函数来查找，但更花时间。
     it_set = find(set1.begin(),set1.end(), 1);//更耗时
-    it_set = set1.find(1);//logN
+    it_set = set1.find(7);//logN
 
 
         //逻辑运算符：>,<,>=,<=,==，!=  按照字典顺序比较两个set
@@ -546,7 +584,7 @@ int main()
 
 
 
-    //--------map
+    //--------map   （增删查时间复杂度均为logN）
         //map的iterator类型和set是一样的。元素（即*iterator）为一个pair
 
         //=操作符
@@ -600,6 +638,7 @@ int main()
         //[]操作符访问或插入元素。复杂度一般为O（1），最坏情况为O（N）
         
         //可以说除了iterator与算法时间复杂度与map不同以外，其他函数用法与map完全相同。
+        //主要算法（插入，查找，删除）的时间复杂度都是一般为O（1），最坏情况为O（N）。
 
 
 

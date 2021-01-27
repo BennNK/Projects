@@ -1,0 +1,2 @@
+C:\Projects\Projects\hackerrank\Encryption by Shifting\Debug\Encryption by Shifting.exe
+C:\Projects\Projects\hackerrank\Encryption by Shifting\Debug\Encryption by Shifting.pdb
