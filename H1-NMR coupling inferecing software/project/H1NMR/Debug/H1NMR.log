@@ -1,0 +1,60 @@
+﻿  project.cpp
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(56,34): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(57,34): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(75,44): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(76,66): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(84,34): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(85,34): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(103,44): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(104,66): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(106,64): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(186,50): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(275,99): error C2664: “int DrawTextW(HDC,LPCWSTR,int,LPRECT,UINT)”: 无法将参数 2 从“const _Elem *”转换为“LPCWSTR”
+          with
+          [
+              _Elem=char
+          ]
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(275,35): message : 与指向的类型无关；强制转换要求 reinterpret_cast、C 样式强制转换或函数样式强制转换
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\winuser.h(8175,1): message : 参见“DrawTextW”的声明
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(276,100): error C2664: “int DrawTextW(HDC,LPCWSTR,int,LPRECT,UINT)”: 无法将参数 2 从“const _Elem *”转换为“LPCWSTR”
+          with
+          [
+              _Elem=char
+          ]
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(276,35): message : 与指向的类型无关；强制转换要求 reinterpret_cast、C 样式强制转换或函数样式强制转换
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\winuser.h(8175,1): message : 参见“DrawTextW”的声明
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(277,89): error C2664: “int DrawTextW(HDC,LPCWSTR,int,LPRECT,UINT)”: 无法将参数 2 从“char [100]”转换为“LPCWSTR”
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(277,26): message : 与指向的类型无关；强制转换要求 reinterpret_cast、C 样式强制转换或函数样式强制转换
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\winuser.h(8175,1): message : 参见“DrawTextW”的声明
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(280,107): error C2664: “int DrawTextW(HDC,LPCWSTR,int,LPRECT,UINT)”: 无法将参数 2 从“char [100]”转换为“LPCWSTR”
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(280,30): message : 与指向的类型无关；强制转换要求 reinterpret_cast、C 样式强制转换或函数样式强制转换
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\winuser.h(8175,1): message : 参见“DrawTextW”的声明
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(292,209): error C2664: “int MessageBoxW(HWND,LPCWSTR,LPCWSTR,UINT)”: 无法将参数 2 从“const char [102]”转换为“LPCWSTR”
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(292,29): message : 与指向的类型无关；强制转换要求 reinterpret_cast、C 样式强制转换或函数样式强制转换
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\winuser.h(9153,1): message : 参见“MessageBoxW”的声明
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(297,118): error C2664: “int MessageBoxW(HWND,LPCWSTR,LPCWSTR,UINT)”: 无法将参数 2 从“const char [11]”转换为“LPCWSTR”
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(297,29): message : 与指向的类型无关；强制转换要求 reinterpret_cast、C 样式强制转换或函数样式强制转换
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\winuser.h(9153,1): message : 参见“MessageBoxW”的声明
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(311,14): error C2065: “IDC_BTN_ADVANCE”: 未声明的标识符
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(311,14): error C2131: 表达式的计算结果不是常数
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(311,14): message : 遇到非常量(子)表达式
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(312,140): error C2664: “int MessageBoxW(HWND,LPCWSTR,LPCWSTR,UINT)”: 无法将参数 2 从“const char [28]”转换为“LPCWSTR”
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(312,33): message : 与指向的类型无关；强制转换要求 reinterpret_cast、C 样式强制转换或函数样式强制转换
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\winuser.h(9153,1): message : 参见“MessageBoxW”的声明
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(319,118): error C2664: “int MessageBoxW(HWND,LPCWSTR,LPCWSTR,UINT)”: 无法将参数 2 从“const char [11]”转换为“LPCWSTR”
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(319,33): message : 与指向的类型无关；强制转换要求 reinterpret_cast、C 样式强制转换或函数样式强制转换
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\winuser.h(9153,1): message : 参见“MessageBoxW”的声明
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(326,14): error C2065: “IDC_BTN_TEST”: 未声明的标识符
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(326,14): error C2131: 表达式的计算结果不是常数
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(326,14): message : 遇到非常量(子)表达式
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(327,133): error C2664: “int MessageBoxW(HWND,LPCWSTR,LPCWSTR,UINT)”: 无法将参数 2 从“const char [21]”转换为“LPCWSTR”
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(327,33): message : 与指向的类型无关；强制转换要求 reinterpret_cast、C 样式强制转换或函数样式强制转换
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\winuser.h(9153,1): message : 参见“MessageBoxW”的声明
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(366,55): warning C4244: “+=”: 从“float”转换到“int”，可能丢失数据
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(387,88): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(390,160): error C2664: “int MessageBoxW(HWND,LPCWSTR,LPCWSTR,UINT)”: 无法将参数 2 从“const char [34]”转换为“LPCWSTR”
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(390,37): message : 与指向的类型无关；强制转换要求 reinterpret_cast、C 样式强制转换或函数样式强制转换
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\winuser.h(9153,1): message : 参见“MessageBoxW”的声明
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(249,9): error C4996: 'gcvt': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _gcvt. See online help for details.
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(311,1): error C2051: case 表达式不是常量
+C:\Projects\Projects\H1-NMR coupling inferecing software\project\H1NMR\project.cpp(326,1): error C2051: case 表达式不是常量
