@@ -19,6 +19,16 @@ For support of the software please email leihaoranpku AT purdue.edu
 Installation:
 No installation required. Run H1-NMR Deconvolutor (version number).exe in the root directory to start.
 
-Usage example
+Usage example:
 Please see input examples.txt for the correct format of data input. The software can automatically correct small biases of your input data (see input examples.txt for more detail).
+
+Release History:
+Planning: 1.0.1-added manual decoupling functionality.
+1.0.0-added input error correction algorithms with high acceptance rate of real data from any commercial instrument.
+
+Meta:
+Haoran Lei
+https://github.com/BennNK
+
+
 
