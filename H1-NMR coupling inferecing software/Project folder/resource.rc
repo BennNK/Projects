@@ -1,0 +1,16 @@
+#include "resource.h"
+
+DLG_MAIN DIALOGEX 6, 5, 500, 300
+
+CAPTION "H1-NMR deconvolutor [v 1.0.1]"
+
+FONT 20, "TimesNewRoman"
+
+STYLE 0x10CE0804
+
+BEGIN
+  CONTROL "&Deconvolutor", IDC_BTN_TEST, "Button", 0x10010000, 20,  20, 100, 15
+  CONTROL "&Spectrum Predictor", IDC_BTN_ADVANCE, "Button", 0x10010000, 20, 50, 100, 15
+  CONTROL "&Exit", IDC_BTN_QUIT, "Button", 0x10010000, 20, 80, 100, 15
+
+END

@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1612038600 source:d:\codeblocks\ds prac\win32_test\resource.rc
+	"resource.h"
+
+1370405859 d:\codeblocks\ds prac\win32_test\resource.h
+	<windows.h>
+
+1612039040 source:d:\codeblocks\ds prac\win32_test\main.cpp
+	<iostream>
+	<mem.h>
+	<stdlib.h>
+	<cmath>
+	<windows.h>
+	<tchar.h>
+	"resource.h"
+	<string>
+	<cstring>
+	<stdlib.h>
+	<stdio.h>
+

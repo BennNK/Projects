@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1370525898 source:d:\codeblocks\ds prac\win32_test\resource.rc
+	"resource.h"
+
+1370409459 d:\codeblocks\ds prac\win32_test\resource.h
+	<windows.h>
+
