@@ -269,12 +269,17 @@ int main()
     bool _is_sorted_dec = is_sorted(str3.begin() + 1, str3.end(), [](char a, char b) {return b < a; });//返回true。如不及加pred则默认升序
 
 
-    
+    //* * * * * * * * * * * 一些二分操作（logN）,使用前需要先升序排序* * * * * * * * * 
     //binary_search
         //复杂度：以2为底的log（N）
         //仅能在已 升序 排序后的序列上使用。
           //返回bool
     bool _found = binary_search(str3.begin() + 1, str3.end(), 'a');//返回false,因为str3不是升序排序
+
+    //upper_bond
+        //返回指向首个大于 value 的元素的迭代器，或若找不到这种元素则为 last 。
+
+
 
 
     //merge
@@ -584,7 +589,7 @@ int main()
 
 
 
-    //--------map   （增删查时间复杂度均为logN）
+    //--------map   （增删查时间复杂度均为logN）移动一次iterator时间为O（1）
         //map的iterator类型和set是一样的。元素（即*iterator）为一个pair
 
         //=操作符
@@ -631,7 +636,7 @@ int main()
 
        
     //-------unordered_map
-        //迭代器类型为LegacyForwardIterator，只能有=，==，++的操作。遍历哈希表没啥意义。
+        //迭代器类型为LegacyForwardIterator，只能有=，==，++的操作（separate chaining的链表底层结构决定的） 。移动一次iterator时间为O（1）
 
         //=操作符
 
@@ -643,8 +648,20 @@ int main()
 
 
     
+    //multimap
+        //与map的区别
+        //1. 没有[]查询的操作
+        //2. count()返回的数字可能大于1
+        //3. find如果用于查找非unique的key，则返回的是按时间顺序插入该multimap的第一个该key对应的元素。（用4.的三个函数来代替比较好）
+        //4. upper_bound, lower_bound和equal_range：返回key相比于某个值得元素范围。（时间复杂度均为logN）
 
-
+    multimap <float, int> mmap1 = { {1,1},{2,5},{4,5},{3,2},{3,3},{2,1},{2,0} };//排序后为{ {1,1},{2,5},{2,1},{2,0},{3,2},{3,3},{4,5} }可见同一key是按时间顺序插入的。
+    auto it_mmap = mmap1.find(2);//找到的是指向{2,5}的it
+    auto up = mmap1.upper_bound(2.5);//找到的是指向{3,2}的it，即第一个大于2.5的元素。2.5不需要存在于该multimap里。如果参数是2而不是2.5，则依旧返回指向{3,2}的it。
+    auto low = mmap1.lower_bound(2.5);//返回指向首个大于等于 2.5 的元素的迭代器。这里返回的依然是指向{3,2}的it。
+    auto low2 = mmap1.lower_bound(2);//找到的是指向{2,5}的it
+    auto eq = mmap1.equal_range(2.5);//返回一个iterator pair，其中第一个和第二个均为指向{3,2}的it。注意不是指向end。
+    auto eq2 = mmap1.equal_range(2);//返回一对iterator，分别指向{2,5}和{3,2}（即元素key等于2的范围）
 
 
 

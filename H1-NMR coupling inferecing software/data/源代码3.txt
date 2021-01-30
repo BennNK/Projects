@@ -1,0 +1,248 @@
+#define WIN32_LEAN_AND_MEAN
+#include <iostream>
+#include <mem.h>
+#include <stdlib.h>
+#include <cmath>
+#include <windows.h>
+#include "resource.h"
+
+using namespace std;
+
+const int MAXNUM=1000;
+
+struct a_heap//存储裂分峰数据的结构
+{
+    double array[MAXNUM];
+    int left;
+    int right;
+    int is_valid[MAXNUM];
+}heap;
+
+struct peak//存储输入数据的结构
+{
+    double delta;
+    int height;
+};
+
+peak input[64];
+double peak_height_1[64];
+double temp_store[1000];
+
+void analyze(a_heap& object,float frequency)//分析堆的每一层的函数
+{
+    int level_number=1;
+    while(object.left!=object.right)//替代递归的循环,当堆的层中只有一个元素时终止
+    {
+
+    int i,j,k,length_of_level=object.right-object.left+1,i_for_temp;//对堆的一层进行操作
+    double distance;
+
+    for(i=1;i<=object.right-object.left;i++)//i代表步长，从1开始
+    {
+        memset(temp_store,0,sizeof(double));//重新定义步长时，把存储用于构建下一层堆的数据的临时存储空间清空
+        i_for_temp=0;
+
+        for(j=object.left;j<=object.right;j++)
+        {
+            object.is_valid[j]=0;//重新定义步长时，把层中所有元素重设为未访问过
+        }
+
+        j=object.left;//j为扫描距离是否合理的计数器
+
+        distance=object.array[object.left+i]-object.array[object.left];//固定i下，定义的扫描步长
+
+
+        while(j<=object.right)//贪心法算出步长匹配组合
+        {
+            if(object.is_valid[j]==1)
+            {
+                j++;
+                continue;
+            }
+
+            for(k=j+i;k<=object.right;)//固定j，从j的右面开始寻找合法位置
+            {
+                if(object.is_valid[k]==1)//判断k所指的元素是否已被合法化
+                {
+                    k++;
+                    continue;
+                }
+
+                if(object.is_valid[j]==0&&object.is_valid[k]==0&&abs(object.array[k]-object.array[j]-distance)<(distance/10))//步长匹配
+                {
+                    object.is_valid[j]=1;
+                    object.is_valid[k]=1;//将匹配步长的两个元素合法化
+                    temp_store[i_for_temp]=(object.array[j]+object.array[k])/2;//计算用于构建上一层堆的元素，存到临时存储空间temp_store中
+                    i_for_temp++;
+                    break;
+                }
+                else
+                {
+                    k++;//步长不匹配
+                    continue;
+                }
+            }
+
+            j++;
+
+        }
+
+        for(j=object.left;j<=object.right;j++)//判断heap的一层中的元素的距离是否全部合法
+        {
+            if(object.is_valid[j]==0)
+             break;
+        }
+
+        if(j==object.right+1) //所选步长i合理
+        {
+            cout<<"偶合常数 "<<level_number<<" "<<"="<<" "<<distance*frequency<<endl;//完成对一层的操作后，输出偶合常数
+            break;
+        }
+
+     }
+
+        object.right=object.left-1;
+        object.left=object.right+1-length_of_level/2;//定义堆的上一层的上下界
+
+        for(i=object.left,i_for_temp=0;i<=object.right;i++,i_for_temp++)
+        {
+            object.array[i]=temp_store[i_for_temp];//构造堆的上一层
+        }
+
+        memset(temp_store,0,sizeof(double));
+
+        level_number++;//进入堆的上一层
+
+    }
+
+}
+HINSTANCE hInst;
+
+
+BOOL CALLBACK DialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+ ;// HWND hwndButton;
+   switch(uMsg)
+    {
+        case WM_INITDIALOG:
+             MessageBox(hwndDlg, "核磁共振裂分峰解析工具 [版本 1.0.0]\n版权所有 <c> 2013 北京大学化学与分子工程学院 雷浩然。保留所有权利", "欢迎使用", MB_ICONINFORMATION);
+             return TRUE;
+
+
+        case WM_CLOSE:
+            MessageBox(hwndDlg, "感谢使用！", "核磁共振裂分峰解析工具 [版本 1.0.0]", MB_ICONINFORMATION);
+            EndDialog(hwndDlg, 0);
+            return TRUE;
+            //return TRUE;
+
+        //case WM_CREATE:
+            //hwndButton=CreateWindowW(TEXT("button"),TEXT("anniu"),WS_CHILD | WS_VISIBLE,
+            //0,0,20,20,hwndButton,(HMENU)0,((LPCREATESTRUCT)lParam)->hins,NULL);
+
+
+
+       lable: case WM_COMMAND:
+            switch(LOWORD(wParam))
+            {
+
+                case IDC_BTN_QUIT:
+                MessageBox(hwndDlg, "要进行人工解谱，请先关闭计算机", "H1-NMR", MB_ICONWARNING);
+
+                    EndDialog(hwndDlg, 0);
+                    return TRUE;
+
+                case IDC_BTN_TEST:
+                    MessageBox(hwndDlg, "裂分峰解谱即将开始！", "H1-NMR", MB_ICONWARNING);
+                    EndDialog(hwndDlg, 0);
+
+                    {
+    int i,peaknumber,j,number_of_split,temp;
+    float frequency;
+
+    //cout<<"核磁共振裂分峰解析工具 [版本 1.0.0]"<<endl<<"版权所有 <c> 2013 北京大学化学与分子工程学院 雷浩然。保留所有权利"<<endl<<endl;
+
+    cout<<"请输入裂分峰的数目"<<endl;
+    cin>>peaknumber;//输入峰数
+    cout<<endl;
+
+    cout<<"请输入扫场频率（MHz）"<<endl;
+    cin>>frequency;//输入扫场频率
+    cout<<endl;
+
+    cout<<"请分别输入每个裂分峰的化学位移（ppm）以及峰的最简整数比高度"<<endl;
+    for(i=0;i<peaknumber;i++)
+    {
+        cin>>input[i].delta>>input[i].height;//输入每个峰的位移和强度，存入顺序表
+    }
+    cout<<endl;
+
+    for(i=0,j=0;i<peaknumber;i++)
+    {
+        temp=j;
+        for(;j<temp+input[i].height;j++)
+        {
+            peak_height_1[j]=input[i].delta;//将强度为n的峰转化为n个强度为1的峰，其位移值存入另一个顺序表
+        }
+    }
+
+    number_of_split=0;
+
+    for(i=0;i<peaknumber;i++)
+    {
+        number_of_split+=input[i].height;//计算强度为1的峰的数目
+    }
+
+    j=0;
+
+    for(i=MAXNUM-number_of_split;i<MAXNUM;i++,j++)
+    {
+        heap.array[i]=peak_height_1[j];//将最底层峰的位移数据存入堆的叶节点上
+    }
+    heap.left=MAXNUM-number_of_split;
+    heap.right=MAXNUM-1;
+
+
+    for(i=0;i<MAXNUM;i++)
+    {
+        heap.is_valid[i]=0;//将峰的初始判断值设为未访问
+    }
+
+    analyze(heap,frequency);//用重构堆法分析位移数据，得出每一层的偶合常数
+
+    cout<<endl<<"该氢原子的化学位移为"<<(input[0].delta+input[peaknumber-1].delta)/2<<"ppm"<<endl;//输出化学位移值
+    cout<<"************************"<<endl<<endl<<endl;
+
+    MessageBox(hwndDlg, "解谱成功！请在窗口中查看解谱结果", "核磁共振裂分峰解析工具 [版本 1.0.0]", MB_ICONINFORMATION);
+    EndDialog(hwndDlg, 0);
+
+
+
+
+
+
+    goto lable;
+}
+
+
+
+            return FALSE;
+
+            }
+
+
+}
+
+    return FALSE;
+
+}
+
+
+int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
+{
+    hInst = hInstance;
+    return(DialogBox(hInstance, MAKEINTRESOURCE(DLG_MAIN), NULL, (DLGPROC)DialogProc));
+
+    // The user interface is a modal dialog box
+    //if(DialogBox(hInstance, MAKEINTRESOURCE(DLG_MAIN), NULL, (DLGPROC)DialogProc)) break;
+
+}

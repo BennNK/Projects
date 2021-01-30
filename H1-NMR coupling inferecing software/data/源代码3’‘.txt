@@ -1,0 +1,14 @@
+#include "resource.h"
+
+DLG_MAIN DIALOGEX 6, 5, 194, 106
+
+CAPTION "核磁共振裂分峰解析工具 [版本 1.0.0]"
+
+FONT 8, "Tahoma"
+
+STYLE 0x10CE0804
+
+BEGIN
+  CONTROL "&机器解谱", IDC_BTN_TEST, "Button", 0x10010000, 50,  20, 100, 15
+  CONTROL "&人工解谱", IDC_BTN_QUIT, "Button", 0x10010000, 50, 50, 100, 15
+END

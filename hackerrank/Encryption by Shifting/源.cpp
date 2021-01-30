@@ -7,64 +7,57 @@
 #include <map>
 #include <queue>
 #include <unordered_set>
+#include <stdio.h>
 typedef long long ll;
 using namespace std;
 
 
 
-
 int main() {
     /* Enter your code here. Read input from STDIN. Print output to STDOUT */
-    int n_case=1;
-    //5 6 5 2 7 6 11 7 0
-    for (; n_case >0; n_case++)
+
+    iostream::sync_with_stdio(false);
+    std::cin.tie(0);
+
+    int n,q;
+    cin >> n;
+    cin >> q;
+    vector<int> data;
+    data.resize(n);
+    for (int i = 0; i < n; i++)
     {
-
-        //for (int i = 0; i < 50000; i++) cout << 1 << ' ';
-        //cout << 0;
-
-        ll income = 0;
-        unordered_set <int> bet;
-        int c = 0;
-        
-        while (1)
-        {
-            int n;
-            if (cin >> n) c++;
-
-            if (n == 0) break;
-            if (n == 11) {
-                income++; continue;
-            }
-            if (n == 2 || n == 3 || n == 12) {
-                income--; continue;
-            }
-            if (n == 7)
-            {
-                income++;
-                if (!bet.empty())
-                {
-                    income -= bet.size();
-                    bet.clear();
-                }
-                continue;
-            }
-            if (bet.count(n))
-            {
-                income++;
-
-            }
-            else bet.insert(n);
-
-
-        }
-        if (c == 0) break;
-        if (income == 0) cout << "Sequence " << n_case << ": Break even." << endl;
-        if (income > 0) cout << "Sequence " << n_case << ": Win of $"<<income<<"." << endl;
-        if (income < 0) cout << "Sequence " << n_case << ": Loss of $" << income << "." << endl;
-        cin.clear();
-        fflush(stdin);
+        cin >> data[i];
     }
+
+    for (int i = 0; i < q; i++)
+    {
+        int l, r, c;
+        cin >> l;
+        cin >> r;
+        cin >> c;
+        int cnt = 0;
+        for (int j = l - 1; j < r; j++)
+        {
+            if (data[j] == c) cnt++;
+        }
+        cout << cnt <<'\n';
+
+    }
+    /*vector<vector<int>> qry;
+    for (int i = 0; i < q; i++)
+    {
+        vector <int> one_qry(3);
+        cin >> one_qry[0];
+        cin >> one_qry[1];
+        cin >> one_qry[2];
+        qry.push_back(one_qry);
+    }
+
+    for (int i = 0; i < q; i++)
+    {
+        int cnt = count(data.begin() + qry[i][0] - 1, data.begin() + qry[i][1], qry[i][2]);
+        cout << cnt <<'\n';
+    }*/
     
     
     return 0;
